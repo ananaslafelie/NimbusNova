@@ -1,9 +1,9 @@
 {
   "protocol_version": "1.0",
   "description": "Punte de comunicare Windows-MacBook prin Git",
-  "last_update": "2026-11-08T00:05:53.720983",
+  "last_update": "2026-11-08T00:06:23.210577",
   "commands": {
-    "description": "Windows scrie comenzi aici, MacBook cite\u0219te \u0219i execut\u0103",
+    "description": "Windows scrie comenzi aici, MacBook citește și execută",
     "pending": [],
     "completed": [
       {
@@ -32,21 +32,21 @@
         "status": "completed",
         "completed_at": "2026-11-08T00:05:56.438061",
         "success": true,
-        "output": "Worker pornit (PID PID: 2252). worker ONLINE \u00een master"
+        "output": "Worker pornit (PID PID: 2252). worker ONLINE în master"
       }
     ]
   },
   "status": {
-    "description": "MacBook raporteaz\u0103 status aici",
+    "description": "MacBook raportează status aici",
     "macbook_ready": true,
     "worker_running": true,
     "retry_connection": true,
-    "last_heartbeat": "2026-11-08T00:05:53.721006",
+    "last_heartbeat": "2026-11-08T00:06:23.210577",
     "connection_errors": [],
-    "current_action": "Executare RESTART_WORKER"
+    "current_action": "Worker ONLINE dupa RESTART_WORKER; test 500 iteme COMPLETED (Mac 21 / Win 29 chunks)"
   },
   "results": {
-    "description": "Rezultate teste \u0219i taskuri",
+    "description": "Rezultate teste și taskuri",
     "tests": [
       {
         "task_id": "task-1794088826-0002",
@@ -56,9 +56,19 @@
         "worker_macbook_chunks": 42,
         "worker_windows_chunks": 58,
         "timestamp": "2026-11-08T00:00:36.689427"
+      },
+      {
+        "task_id": "task-1794089178-0001",
+        "status": "COMPLETED",
+        "items": 500,
+        "chunks": 50,
+        "worker_macbook_chunks": 21,
+        "worker_windows_chunks": 29,
+        "duration_s": 3.1,
+        "timestamp": "2026-11-08T00:06:23.210577"
       }
     ],
-    "tasks_completed": 1
+    "tasks_completed": 2
   },
-  "message_for_macbook": "PRIETENE! Ruleaz\u0103: cd ~/Desktop/NimbusNova && git pull origin master && python3 bridge_macbook.py && git add . && git commit -m 'Worker pornit' && git push origin master"
+  "message_for_macbook": "PRIETENE! Rulează: cd ~/Desktop/NimbusNova && git pull origin master && python3 bridge_macbook.py && git add . && git commit -m 'Worker pornit' && git push origin master"
 }
