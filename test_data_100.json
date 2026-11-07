@@ -1,0 +1,702 @@
+[
+  {
+    "id": 1,
+    "nume": "Produs_001",
+    "cantitate": 20,
+    "pret": 6.49,
+    "categorie": "Accesorii"
+  },
+  {
+    "id": 2,
+    "nume": "Produs_002",
+    "cantitate": 30,
+    "pret": 6.99,
+    "categorie": "Consumabile"
+  },
+  {
+    "id": 3,
+    "nume": "Produs_003",
+    "cantitate": 40,
+    "pret": 7.49,
+    "categorie": "Electronice"
+  },
+  {
+    "id": 4,
+    "nume": "Produs_004",
+    "cantitate": 50,
+    "pret": 7.99,
+    "categorie": "Accesorii"
+  },
+  {
+    "id": 5,
+    "nume": "Produs_005",
+    "cantitate": 60,
+    "pret": 8.49,
+    "categorie": "Consumabile"
+  },
+  {
+    "id": 6,
+    "nume": "Produs_006",
+    "cantitate": 70,
+    "pret": 8.99,
+    "categorie": "Electronice"
+  },
+  {
+    "id": 7,
+    "nume": "Produs_007",
+    "cantitate": 80,
+    "pret": 9.49,
+    "categorie": "Accesorii"
+  },
+  {
+    "id": 8,
+    "nume": "Produs_008",
+    "cantitate": 90,
+    "pret": 9.99,
+    "categorie": "Consumabile"
+  },
+  {
+    "id": 9,
+    "nume": "Produs_009",
+    "cantitate": 100,
+    "pret": 10.49,
+    "categorie": "Electronice"
+  },
+  {
+    "id": 10,
+    "nume": "Produs_010",
+    "cantitate": 110,
+    "pret": 10.99,
+    "categorie": "Accesorii"
+  },
+  {
+    "id": 11,
+    "nume": "Produs_011",
+    "cantitate": 120,
+    "pret": 11.49,
+    "categorie": "Consumabile"
+  },
+  {
+    "id": 12,
+    "nume": "Produs_012",
+    "cantitate": 130,
+    "pret": 11.99,
+    "categorie": "Electronice"
+  },
+  {
+    "id": 13,
+    "nume": "Produs_013",
+    "cantitate": 140,
+    "pret": 12.49,
+    "categorie": "Accesorii"
+  },
+  {
+    "id": 14,
+    "nume": "Produs_014",
+    "cantitate": 150,
+    "pret": 12.99,
+    "categorie": "Consumabile"
+  },
+  {
+    "id": 15,
+    "nume": "Produs_015",
+    "cantitate": 160,
+    "pret": 13.49,
+    "categorie": "Electronice"
+  },
+  {
+    "id": 16,
+    "nume": "Produs_016",
+    "cantitate": 170,
+    "pret": 13.99,
+    "categorie": "Accesorii"
+  },
+  {
+    "id": 17,
+    "nume": "Produs_017",
+    "cantitate": 180,
+    "pret": 14.49,
+    "categorie": "Consumabile"
+  },
+  {
+    "id": 18,
+    "nume": "Produs_018",
+    "cantitate": 190,
+    "pret": 14.99,
+    "categorie": "Electronice"
+  },
+  {
+    "id": 19,
+    "nume": "Produs_019",
+    "cantitate": 200,
+    "pret": 15.49,
+    "categorie": "Accesorii"
+  },
+  {
+    "id": 20,
+    "nume": "Produs_020",
+    "cantitate": 210,
+    "pret": 15.99,
+    "categorie": "Consumabile"
+  },
+  {
+    "id": 21,
+    "nume": "Produs_021",
+    "cantitate": 220,
+    "pret": 16.49,
+    "categorie": "Electronice"
+  },
+  {
+    "id": 22,
+    "nume": "Produs_022",
+    "cantitate": 230,
+    "pret": 16.99,
+    "categorie": "Accesorii"
+  },
+  {
+    "id": 23,
+    "nume": "Produs_023",
+    "cantitate": 240,
+    "pret": 17.49,
+    "categorie": "Consumabile"
+  },
+  {
+    "id": 24,
+    "nume": "Produs_024",
+    "cantitate": 250,
+    "pret": 17.99,
+    "categorie": "Electronice"
+  },
+  {
+    "id": 25,
+    "nume": "Produs_025",
+    "cantitate": 260,
+    "pret": 18.49,
+    "categorie": "Accesorii"
+  },
+  {
+    "id": 26,
+    "nume": "Produs_026",
+    "cantitate": 270,
+    "pret": 18.99,
+    "categorie": "Consumabile"
+  },
+  {
+    "id": 27,
+    "nume": "Produs_027",
+    "cantitate": 280,
+    "pret": 19.49,
+    "categorie": "Electronice"
+  },
+  {
+    "id": 28,
+    "nume": "Produs_028",
+    "cantitate": 290,
+    "pret": 19.99,
+    "categorie": "Accesorii"
+  },
+  {
+    "id": 29,
+    "nume": "Produs_029",
+    "cantitate": 300,
+    "pret": 20.49,
+    "categorie": "Consumabile"
+  },
+  {
+    "id": 30,
+    "nume": "Produs_030",
+    "cantitate": 310,
+    "pret": 20.99,
+    "categorie": "Electronice"
+  },
+  {
+    "id": 31,
+    "nume": "Produs_031",
+    "cantitate": 320,
+    "pret": 21.49,
+    "categorie": "Accesorii"
+  },
+  {
+    "id": 32,
+    "nume": "Produs_032",
+    "cantitate": 330,
+    "pret": 21.99,
+    "categorie": "Consumabile"
+  },
+  {
+    "id": 33,
+    "nume": "Produs_033",
+    "cantitate": 340,
+    "pret": 22.49,
+    "categorie": "Electronice"
+  },
+  {
+    "id": 34,
+    "nume": "Produs_034",
+    "cantitate": 350,
+    "pret": 22.99,
+    "categorie": "Accesorii"
+  },
+  {
+    "id": 35,
+    "nume": "Produs_035",
+    "cantitate": 360,
+    "pret": 23.49,
+    "categorie": "Consumabile"
+  },
+  {
+    "id": 36,
+    "nume": "Produs_036",
+    "cantitate": 370,
+    "pret": 23.99,
+    "categorie": "Electronice"
+  },
+  {
+    "id": 37,
+    "nume": "Produs_037",
+    "cantitate": 380,
+    "pret": 24.49,
+    "categorie": "Accesorii"
+  },
+  {
+    "id": 38,
+    "nume": "Produs_038",
+    "cantitate": 390,
+    "pret": 24.99,
+    "categorie": "Consumabile"
+  },
+  {
+    "id": 39,
+    "nume": "Produs_039",
+    "cantitate": 400,
+    "pret": 25.49,
+    "categorie": "Electronice"
+  },
+  {
+    "id": 40,
+    "nume": "Produs_040",
+    "cantitate": 410,
+    "pret": 25.99,
+    "categorie": "Accesorii"
+  },
+  {
+    "id": 41,
+    "nume": "Produs_041",
+    "cantitate": 420,
+    "pret": 26.49,
+    "categorie": "Consumabile"
+  },
+  {
+    "id": 42,
+    "nume": "Produs_042",
+    "cantitate": 430,
+    "pret": 26.99,
+    "categorie": "Electronice"
+  },
+  {
+    "id": 43,
+    "nume": "Produs_043",
+    "cantitate": 440,
+    "pret": 27.49,
+    "categorie": "Accesorii"
+  },
+  {
+    "id": 44,
+    "nume": "Produs_044",
+    "cantitate": 450,
+    "pret": 27.99,
+    "categorie": "Consumabile"
+  },
+  {
+    "id": 45,
+    "nume": "Produs_045",
+    "cantitate": 460,
+    "pret": 28.49,
+    "categorie": "Electronice"
+  },
+  {
+    "id": 46,
+    "nume": "Produs_046",
+    "cantitate": 470,
+    "pret": 28.99,
+    "categorie": "Accesorii"
+  },
+  {
+    "id": 47,
+    "nume": "Produs_047",
+    "cantitate": 480,
+    "pret": 29.49,
+    "categorie": "Consumabile"
+  },
+  {
+    "id": 48,
+    "nume": "Produs_048",
+    "cantitate": 490,
+    "pret": 29.99,
+    "categorie": "Electronice"
+  },
+  {
+    "id": 49,
+    "nume": "Produs_049",
+    "cantitate": 500,
+    "pret": 30.49,
+    "categorie": "Accesorii"
+  },
+  {
+    "id": 50,
+    "nume": "Produs_050",
+    "cantitate": 10,
+    "pret": 30.99,
+    "categorie": "Consumabile"
+  },
+  {
+    "id": 51,
+    "nume": "Produs_051",
+    "cantitate": 20,
+    "pret": 31.49,
+    "categorie": "Electronice"
+  },
+  {
+    "id": 52,
+    "nume": "Produs_052",
+    "cantitate": 30,
+    "pret": 31.99,
+    "categorie": "Accesorii"
+  },
+  {
+    "id": 53,
+    "nume": "Produs_053",
+    "cantitate": 40,
+    "pret": 32.49,
+    "categorie": "Consumabile"
+  },
+  {
+    "id": 54,
+    "nume": "Produs_054",
+    "cantitate": 50,
+    "pret": 32.99,
+    "categorie": "Electronice"
+  },
+  {
+    "id": 55,
+    "nume": "Produs_055",
+    "cantitate": 60,
+    "pret": 33.49,
+    "categorie": "Accesorii"
+  },
+  {
+    "id": 56,
+    "nume": "Produs_056",
+    "cantitate": 70,
+    "pret": 33.99,
+    "categorie": "Consumabile"
+  },
+  {
+    "id": 57,
+    "nume": "Produs_057",
+    "cantitate": 80,
+    "pret": 34.49,
+    "categorie": "Electronice"
+  },
+  {
+    "id": 58,
+    "nume": "Produs_058",
+    "cantitate": 90,
+    "pret": 34.99,
+    "categorie": "Accesorii"
+  },
+  {
+    "id": 59,
+    "nume": "Produs_059",
+    "cantitate": 100,
+    "pret": 35.49,
+    "categorie": "Consumabile"
+  },
+  {
+    "id": 60,
+    "nume": "Produs_060",
+    "cantitate": 110,
+    "pret": 35.99,
+    "categorie": "Electronice"
+  },
+  {
+    "id": 61,
+    "nume": "Produs_061",
+    "cantitate": 120,
+    "pret": 36.49,
+    "categorie": "Accesorii"
+  },
+  {
+    "id": 62,
+    "nume": "Produs_062",
+    "cantitate": 130,
+    "pret": 36.99,
+    "categorie": "Consumabile"
+  },
+  {
+    "id": 63,
+    "nume": "Produs_063",
+    "cantitate": 140,
+    "pret": 37.49,
+    "categorie": "Electronice"
+  },
+  {
+    "id": 64,
+    "nume": "Produs_064",
+    "cantitate": 150,
+    "pret": 37.99,
+    "categorie": "Accesorii"
+  },
+  {
+    "id": 65,
+    "nume": "Produs_065",
+    "cantitate": 160,
+    "pret": 38.49,
+    "categorie": "Consumabile"
+  },
+  {
+    "id": 66,
+    "nume": "Produs_066",
+    "cantitate": 170,
+    "pret": 38.99,
+    "categorie": "Electronice"
+  },
+  {
+    "id": 67,
+    "nume": "Produs_067",
+    "cantitate": 180,
+    "pret": 39.49,
+    "categorie": "Accesorii"
+  },
+  {
+    "id": 68,
+    "nume": "Produs_068",
+    "cantitate": 190,
+    "pret": 39.99,
+    "categorie": "Consumabile"
+  },
+  {
+    "id": 69,
+    "nume": "Produs_069",
+    "cantitate": 200,
+    "pret": 40.49,
+    "categorie": "Electronice"
+  },
+  {
+    "id": 70,
+    "nume": "Produs_070",
+    "cantitate": 210,
+    "pret": 40.99,
+    "categorie": "Accesorii"
+  },
+  {
+    "id": 71,
+    "nume": "Produs_071",
+    "cantitate": 220,
+    "pret": 41.49,
+    "categorie": "Consumabile"
+  },
+  {
+    "id": 72,
+    "nume": "Produs_072",
+    "cantitate": 230,
+    "pret": 41.99,
+    "categorie": "Electronice"
+  },
+  {
+    "id": 73,
+    "nume": "Produs_073",
+    "cantitate": 240,
+    "pret": 42.49,
+    "categorie": "Accesorii"
+  },
+  {
+    "id": 74,
+    "nume": "Produs_074",
+    "cantitate": 250,
+    "pret": 42.99,
+    "categorie": "Consumabile"
+  },
+  {
+    "id": 75,
+    "nume": "Produs_075",
+    "cantitate": 260,
+    "pret": 43.49,
+    "categorie": "Electronice"
+  },
+  {
+    "id": 76,
+    "nume": "Produs_076",
+    "cantitate": 270,
+    "pret": 43.99,
+    "categorie": "Accesorii"
+  },
+  {
+    "id": 77,
+    "nume": "Produs_077",
+    "cantitate": 280,
+    "pret": 44.49,
+    "categorie": "Consumabile"
+  },
+  {
+    "id": 78,
+    "nume": "Produs_078",
+    "cantitate": 290,
+    "pret": 44.99,
+    "categorie": "Electronice"
+  },
+  {
+    "id": 79,
+    "nume": "Produs_079",
+    "cantitate": 300,
+    "pret": 45.49,
+    "categorie": "Accesorii"
+  },
+  {
+    "id": 80,
+    "nume": "Produs_080",
+    "cantitate": 310,
+    "pret": 45.99,
+    "categorie": "Consumabile"
+  },
+  {
+    "id": 81,
+    "nume": "Produs_081",
+    "cantitate": 320,
+    "pret": 46.49,
+    "categorie": "Electronice"
+  },
+  {
+    "id": 82,
+    "nume": "Produs_082",
+    "cantitate": 330,
+    "pret": 46.99,
+    "categorie": "Accesorii"
+  },
+  {
+    "id": 83,
+    "nume": "Produs_083",
+    "cantitate": 340,
+    "pret": 47.49,
+    "categorie": "Consumabile"
+  },
+  {
+    "id": 84,
+    "nume": "Produs_084",
+    "cantitate": 350,
+    "pret": 47.99,
+    "categorie": "Electronice"
+  },
+  {
+    "id": 85,
+    "nume": "Produs_085",
+    "cantitate": 360,
+    "pret": 48.49,
+    "categorie": "Accesorii"
+  },
+  {
+    "id": 86,
+    "nume": "Produs_086",
+    "cantitate": 370,
+    "pret": 48.99,
+    "categorie": "Consumabile"
+  },
+  {
+    "id": 87,
+    "nume": "Produs_087",
+    "cantitate": 380,
+    "pret": 49.49,
+    "categorie": "Electronice"
+  },
+  {
+    "id": 88,
+    "nume": "Produs_088",
+    "cantitate": 390,
+    "pret": 49.99,
+    "categorie": "Accesorii"
+  },
+  {
+    "id": 89,
+    "nume": "Produs_089",
+    "cantitate": 400,
+    "pret": 50.49,
+    "categorie": "Consumabile"
+  },
+  {
+    "id": 90,
+    "nume": "Produs_090",
+    "cantitate": 410,
+    "pret": 50.99,
+    "categorie": "Electronice"
+  },
+  {
+    "id": 91,
+    "nume": "Produs_091",
+    "cantitate": 420,
+    "pret": 51.49,
+    "categorie": "Accesorii"
+  },
+  {
+    "id": 92,
+    "nume": "Produs_092",
+    "cantitate": 430,
+    "pret": 51.99,
+    "categorie": "Consumabile"
+  },
+  {
+    "id": 93,
+    "nume": "Produs_093",
+    "cantitate": 440,
+    "pret": 52.49,
+    "categorie": "Electronice"
+  },
+  {
+    "id": 94,
+    "nume": "Produs_094",
+    "cantitate": 450,
+    "pret": 52.99,
+    "categorie": "Accesorii"
+  },
+  {
+    "id": 95,
+    "nume": "Produs_095",
+    "cantitate": 460,
+    "pret": 53.49,
+    "categorie": "Consumabile"
+  },
+  {
+    "id": 96,
+    "nume": "Produs_096",
+    "cantitate": 470,
+    "pret": 53.99,
+    "categorie": "Electronice"
+  },
+  {
+    "id": 97,
+    "nume": "Produs_097",
+    "cantitate": 480,
+    "pret": 54.49,
+    "categorie": "Accesorii"
+  },
+  {
+    "id": 98,
+    "nume": "Produs_098",
+    "cantitate": 490,
+    "pret": 54.99,
+    "categorie": "Consumabile"
+  },
+  {
+    "id": 99,
+    "nume": "Produs_099",
+    "cantitate": 500,
+    "pret": 55.49,
+    "categorie": "Electronice"
+  },
+  {
+    "id": 100,
+    "nume": "Produs_100",
+    "cantitate": 10,
+    "pret": 55.99,
+    "categorie": "Accesorii"
+  }
+]

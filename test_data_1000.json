@@ -1,0 +1,7 @@
+[
+  {"id": 1, "nume": "Produs_A", "cantitate": 100, "pret": 25.50, "categorie": "Electronice"},
+  {"id": 2, "nume": "Produs_B", "cantitate": 50, "pret": 15.00, "categorie": "Accesorii"},
+  {"id": 3, "nume": "Produs_C", "cantitate": 200, "pret": 5.99, "categorie": "Consumabile"},
+  {"id": 4, "nume": "Produs_D", "cantitate": 75, "pret": 99.99, "categorie": "Electronice"},
+  {"id": 5, "nume": "Produs_E", "cantitate": 150, "pret": 12.50, "categorie": "Accesorii"}
+]
