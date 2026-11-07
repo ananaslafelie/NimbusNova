@@ -1,11 +1,11 @@
 {
   "protocol_version": "1.0",
   "description": "Punte de comunicare Windows-MacBook prin Git",
-  "last_update": "2024-11-07T22:50:00",
-  
+  "last_update": "2026-11-07T23:39:58.517163",
   "commands": {
     "description": "Windows scrie comenzi aici, MacBook citește și execută",
-    "pending": [
+    "pending": [],
+    "completed": [
       {
         "id": "cmd_start_worker_001",
         "timestamp": "2024-11-07T22:50:00",
@@ -15,26 +15,30 @@
           "worker_id": "worker-macbook",
           "command": "python3 worker.py --master http://100.64.66.23:8003 --id worker-macbook"
         },
-        "status": "pending"
+        "status": "completed",
+        "completed_at": "2026-11-07T23:38:11.439767",
+        "success": false,
+        "output": "Worker pornit (PID 1995/1996), dar NU s-a putut inregistra: master 100.64.66.23:8003 nu raspunde la TCP."
       }
-    ],
-    "completed": []
+    ]
   },
-  
   "status": {
     "description": "MacBook raportează status aici",
-    "macbook_ready": false,
+    "macbook_ready": true,
     "worker_running": false,
-    "last_heartbeat": "",
-    "connection_errors": [],
-    "current_action": "Așteaptă START_WORKER"
+    "last_heartbeat": "2026-11-07T23:39:58.517163",
+    "connection_errors": [
+      {
+        "time": "2026-11-07T23:39:58.517163",
+        "error": "ConnectError: All connection attempts failed; TCP 8003 timeout (niciun port 8000-8090 deschis)"
+      }
+    ],
+    "current_action": "START_WORKER executat; master 100.64.66.23:8003 indisponibil (ping OK, port timeout)"
   },
-  
   "results": {
     "description": "Rezultate teste și taskuri",
     "tests": [],
     "tasks_completed": 0
   },
-  
   "message_for_macbook": "PRIETENE! Rulează: cd ~/Desktop/NimbusNova && git pull origin master && python3 bridge_macbook.py && git add . && git commit -m 'Worker pornit' && git push origin master"
 }

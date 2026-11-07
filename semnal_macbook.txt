@@ -1,4 +1,4 @@
-STATUS: AȘTEAPTĂ
+STATUS: CONECTAT
 MESAJ: MacBook, deschide acest fișier și schimbă STATUS în CONECTAT
-TIMESTAMP: 
-WORKER_ID: 
+TIMESTAMP: 2026-11-07T23:56:09+0200
+WORKER_ID: worker-macbook
