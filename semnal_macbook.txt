@@ -1,0 +1,4 @@
+STATUS: AȘTEAPTĂ
+MESAJ: MacBook, deschide acest fișier și schimbă STATUS în CONECTAT
+TIMESTAMP: 
+WORKER_ID: 
