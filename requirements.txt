@@ -1,5 +1,32 @@
+# QA DNA - Multithreaded Distributed System
+# Cross-Platform: Windows | macOS | Linux
+
+# Core Framework
 fastapi>=0.110
 uvicorn[standard]>=0.29
 httpx>=0.27
+
+# System & Performance
 psutil>=5.9
+aiofiles>=23.0
+python-multipart>=0.0.6
+
+# Data Processing
+pandas>=2.0
+numpy>=1.24
+python-magic>=0.4.27
+python-magic-bin>=0.4.14; sys_platform == "win32"
+
+# UI & Visualization
 rich>=13.7
+nicegui>=1.4
+
+# Future ML Support (optional for now)
+# torch>=2.0; sys_platform != "darwin" or platform_machine != "x86_64"
+# pillow>=10.0
+# opencv-python>=4.8
+
+# Development & Testing
+pytest>=7.0
+black>=23.0
+mypy>=1.0
