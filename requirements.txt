@@ -21,6 +21,9 @@ python-magic-bin>=0.4.14; sys_platform == "win32"
 rich>=13.7
 nicegui>=1.4
 
+# Desktop App
+pyinstaller>=6.0
+
 # Future ML Support (optional for now)
 # torch>=2.0; sys_platform != "darwin" or platform_machine != "x86_64"
 # pillow>=10.0

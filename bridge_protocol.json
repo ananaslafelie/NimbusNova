@@ -1,0 +1,35 @@
+{
+  "protocol_version": "1.0",
+  "description": "Punte de comunicare Windows-MacBook prin Git",
+  "last_update": "",
+  
+  "commands": {
+    "description": "Windows scrie comenzi aici, MacBook citește și execută",
+    "pending": [],
+    "completed": []
+  },
+  
+  "status": {
+    "description": "MacBook raportează status aici",
+    "macbook_ready": false,
+    "worker_running": false,
+    "last_heartbeat": "",
+    "connection_errors": [],
+    "current_action": ""
+  },
+  
+  "results": {
+    "description": "Rezultate teste și taskuri",
+    "tests": [],
+    "tasks_completed": 0
+  },
+  
+  "instructions_for_macbook": {
+    "step_1": "Citește acest fișier din GitHub",
+    "step_2": "Verifică commands.pending",
+    "step_3": "Execută comanda",
+    "step_4": "Scrie rezultatul în status",
+    "step_5": "Fă git push",
+    "step_6": "Așteaptă următoarea comandă"
+  }
+}
