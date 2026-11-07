@@ -4,6 +4,7 @@ Rulează pe Windows (Master + UI), distribuie la Workers (Windows + MacBook)
 """
 
 import asyncio
+import os
 import httpx
 import json
 from pathlib import Path
@@ -11,7 +12,7 @@ from datetime import datetime
 from nicegui import ui, app
 import tempfile
 
-MASTER_URL = "http://localhost:8003"
+MASTER_URL = os.getenv("MASTER_URL", "http://localhost:8003")
 
 class TaskDistributor:
     def __init__(self):
@@ -222,20 +223,25 @@ class TaskDistributor:
                 ui.button('📊 Deschide Dashboard', on_click=lambda: ui.navigate.to('http://localhost:8003/status', new_tab=True))
             
             # Footer
-            ui.label('🔧 Master: localhost:8003 | UI: localhost:8080').classes('text-sm text-gray-500 mt-8')
+            ui.label(f'🔧 Master: {MASTER_URL} | UI: localhost:8080').classes('text-sm text-gray-500 mt-8')
 
 # Crează aplicația
 distributor = TaskDistributor()
+distributor.create_ui()
 
-@app.on_startup
-async def startup():
+
+async def _startup_loop():
+    await asyncio.sleep(0.5)
     await distributor.check_workers()
     # Reîmprospătare automată la fiecare 5 secunde
     while True:
         await asyncio.sleep(5)
         await distributor.check_workers()
 
-# Rulează UI
-distributor.create_ui()
 
+# NiceGUI 3.x nu permite app.on_startup în mod script (python fisier.py);
+# folosim timer pentru a lansa bucla de reîmprospătare.
+ui.timer(0.5, lambda: asyncio.ensure_future(_startup_loop()), once=True)
+
+# Rulează UI
 ui.run(title='QA DNA - Distribuitor', port=8080, reload=False)
