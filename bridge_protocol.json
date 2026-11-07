@@ -1,7 +1,7 @@
 {
   "protocol_version": "1.0",
   "description": "Punte de comunicare Windows-MacBook prin Git",
-  "last_update": "2026-11-08T00:06:23.210577",
+  "last_update": "2026-11-08T00:43:50.254381",
   "commands": {
     "description": "Windows scrie comenzi aici, MacBook citește și execută",
     "pending": [],
@@ -41,9 +41,9 @@
     "macbook_ready": true,
     "worker_running": true,
     "retry_connection": true,
-    "last_heartbeat": "2026-11-08T00:06:23.210577",
+    "last_heartbeat": "2026-11-08T00:43:50.254381",
     "connection_errors": [],
-    "current_action": "Worker ONLINE dupa RESTART_WORKER; test 500 iteme COMPLETED (Mac 21 / Win 29 chunks)"
+    "current_action": "Worker ONLINE (auto-reînregistrare la restart master); chunks_done=0"
   },
   "results": {
     "description": "Rezultate teste și taskuri",

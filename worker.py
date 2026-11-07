@@ -75,18 +75,34 @@ async def register(client: httpx.AsyncClient, master: str, worker_id: str, ip: s
 
 
 async def heartbeat_loop(client: httpx.AsyncClient, master: str, worker_id: str) -> None:
-    """Trimite heartbeat cu resurse la fiecare 3-5s (self-healing pentru master)."""
+    """Trimite heartbeat cu resurse la fiecare 3-5s (self-healing pentru master).
+
+    Daca masterul a repornit (worker necunoscut / 404) sau conexiunea pica,
+    se re-inregistreaza automat, astfel incat MacBook-ul nu mai dispare
+    din lista dupa un restart al masterului.
+    """
+    ip = _local_ip_towards(master)
     while True:
         try:
             cpu = psutil.cpu_percent(interval=None)
             ram = psutil.virtual_memory().available / 1024 / 1024
-            await client.post(
+            r = await client.post(
                 f"{master}/heartbeat",
                 json={"worker_id": worker_id, "cpu_percent": cpu, "ram_free_mb": ram},
             )
+            if r.status_code == 404:
+                console.print("[yellow]worker necunoscut (master repornit) -> reînregistrare[/]")
+                await register(client, master, worker_id, ip)
+                continue
+            r.raise_for_status()
             console.print(f"[dim]💓 heartbeat[/] cpu={cpu:.0f}% ram={ram:.0f}MB")
         except (httpx.HTTPError, OSError) as e:
             console.print(f"[red]heartbeat esuat[/]: {type(e).__name__}: {e}")
+            # incercare de re-inregistrare la erori de retea
+            try:
+                await register(client, master, worker_id, ip)
+            except SystemExit:
+                pass
         await asyncio.sleep(HEARTBEAT_PERIOD_S)
 
 
