@@ -1,11 +1,23 @@
 {
   "protocol_version": "1.0",
   "description": "Punte de comunicare Windows-MacBook prin Git",
-  "last_update": "",
+  "last_update": "2024-11-07T22:50:00",
   
   "commands": {
     "description": "Windows scrie comenzi aici, MacBook citește și execută",
-    "pending": [],
+    "pending": [
+      {
+        "id": "cmd_start_worker_001",
+        "timestamp": "2024-11-07T22:50:00",
+        "command": "START_WORKER",
+        "params": {
+          "master_url": "http://100.64.66.23:8003",
+          "worker_id": "worker-macbook",
+          "command": "python3 worker.py --master http://100.64.66.23:8003 --id worker-macbook"
+        },
+        "status": "pending"
+      }
+    ],
     "completed": []
   },
   
@@ -15,7 +27,7 @@
     "worker_running": false,
     "last_heartbeat": "",
     "connection_errors": [],
-    "current_action": ""
+    "current_action": "Așteaptă START_WORKER"
   },
   
   "results": {
@@ -24,12 +36,5 @@
     "tasks_completed": 0
   },
   
-  "instructions_for_macbook": {
-    "step_1": "Citește acest fișier din GitHub",
-    "step_2": "Verifică commands.pending",
-    "step_3": "Execută comanda",
-    "step_4": "Scrie rezultatul în status",
-    "step_5": "Fă git push",
-    "step_6": "Așteaptă următoarea comandă"
-  }
+  "message_for_macbook": "PRIETENE! Rulează: cd ~/Desktop/NimbusNova && git pull origin master && python3 bridge_macbook.py && git add . && git commit -m 'Worker pornit' && git push origin master"
 }
