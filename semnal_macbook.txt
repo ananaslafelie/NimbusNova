@@ -1,5 +1,4 @@
-STATUS: START_WORKER
-MESAJ: Porneste workerul: python3 worker.py --master http://100.64.66.23:8003 --id worker-macbook
-TIMESTAMP: 2026-11-08T00:30:00+0200
+STATUS: CONECTAT
+MESAJ: MacBook, deschide acest fișier și schimbă STATUS în CONECTAT
+TIMESTAMP: 2026-11-08T00:43:50+0200
 WORKER_ID: worker-macbook
-MASTER_URL: http://100.64.66.23:8003
