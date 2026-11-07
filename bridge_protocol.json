@@ -1,22 +1,10 @@
 {
   "protocol_version": "1.0",
   "description": "Punte de comunicare Windows-MacBook prin Git",
-  "last_update": "2026-11-08T00:15:00.000000",
+  "last_update": "2026-11-08T00:06:23.210577",
   "commands": {
     "description": "Windows scrie comenzi aici, MacBook citește și execută",
-    "pending": [
-      {
-        "id": "cmd_retry_worker_002",
-        "timestamp": "2026-11-08T00:15:00",
-        "command": "RESTART_WORKER",
-        "params": {
-          "master_url": "http://100.64.66.23:8003",
-          "worker_id": "worker-macbook",
-          "command": "python3 worker.py --master http://100.64.66.23:8003 --id worker-macbook"
-        },
-        "status": "pending"
-      }
-    ],
+    "pending": [],
     "completed": [
       {
         "id": "cmd_start_worker_001",
@@ -31,17 +19,31 @@
         "completed_at": "2026-11-07T23:38:11.439767",
         "success": false,
         "output": "Worker pornit (PID 1995/1996), dar NU s-a putut inregistra: master 100.64.66.23:8003 nu raspunde la TCP."
+      },
+      {
+        "id": "cmd_retry_worker_002",
+        "timestamp": "2026-11-08T00:15:00",
+        "command": "RESTART_WORKER",
+        "params": {
+          "master_url": "http://100.64.66.23:8003",
+          "worker_id": "worker-macbook",
+          "command": "python3 worker.py --master http://100.64.66.23:8003 --id worker-macbook"
+        },
+        "status": "completed",
+        "completed_at": "2026-11-08T00:05:56.438061",
+        "success": true,
+        "output": "Worker pornit (PID PID: 2252). worker ONLINE în master"
       }
     ]
   },
   "status": {
     "description": "MacBook raportează status aici",
     "macbook_ready": true,
-    "worker_running": false,
+    "worker_running": true,
     "retry_connection": true,
-    "last_heartbeat": "2026-11-08T00:00:36.689427",
+    "last_heartbeat": "2026-11-08T00:06:23.210577",
     "connection_errors": [],
-    "current_action": "Worker ONLINE pe 8003; task COMPLETED (Mac 42 chunks / Win 58 chunks)"
+    "current_action": "Worker ONLINE dupa RESTART_WORKER; test 500 iteme COMPLETED (Mac 21 / Win 29 chunks)"
   },
   "results": {
     "description": "Rezultate teste și taskuri",
@@ -54,9 +56,19 @@
         "worker_macbook_chunks": 42,
         "worker_windows_chunks": 58,
         "timestamp": "2026-11-08T00:00:36.689427"
+      },
+      {
+        "task_id": "task-1794089178-0001",
+        "status": "COMPLETED",
+        "items": 500,
+        "chunks": 50,
+        "worker_macbook_chunks": 21,
+        "worker_windows_chunks": 29,
+        "duration_s": 3.1,
+        "timestamp": "2026-11-08T00:06:23.210577"
       }
     ],
-    "tasks_completed": 1
+    "tasks_completed": 2
   },
   "message_for_macbook": "PRIETENE! Rulează: cd ~/Desktop/NimbusNova && git pull origin master && python3 bridge_macbook.py && git add . && git commit -m 'Worker pornit' && git push origin master"
 }

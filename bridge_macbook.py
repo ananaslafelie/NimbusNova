@@ -97,9 +97,10 @@ def execute_start_worker(params):
     
     # Pornire în background cu log
     stdout, stderr, rc = run_command(f"{cmd} > worker.log 2>&1 &", background=True)
-    
+
     if rc == 0:
-        return True, f"Worker pornit. PID: {stdout}"
+        ok, msg = verify_worker(master_url, worker_id)
+        return ok, f"Worker pornit (PID {stdout}). {msg}"
     else:
         return False, f"Eroare: {stderr}"
 
@@ -114,6 +115,31 @@ def execute_stop_worker():
         return True, "Worker oprit"
     else:
         return False, f"Eroare oprire: {stderr}"
+
+def execute_restart_worker(params):
+    """Restartează workerul (stop + start) și verifică înregistrarea."""
+    print("🔄 Restart worker MacBook...")
+    execute_stop_worker()
+    time.sleep(1.5)
+    return execute_start_worker(params)
+
+
+def verify_worker(master_url, worker_id, timeout=10):
+    """Verifică dacă workerul apare ONLINE în master."""
+    import urllib.request
+    end = time.time() + timeout
+    while time.time() < end:
+        try:
+            with urllib.request.urlopen(f"{master_url}/status", timeout=3) as r:
+                st = json.load(r)
+            for w in st.get("workers", []):
+                if w.get("id") == worker_id and w.get("status") == "ONLINE":
+                    return True, "worker ONLINE în master"
+        except Exception:
+            pass
+        time.sleep(1)
+    return False, "worker pornit, dar nu apare ONLINE în master (master indisponibil?)"
+
 
 def process_pending_commands():
     """Procesează comenzile în așteptare"""
@@ -142,7 +168,10 @@ def process_pending_commands():
             
             if command == "START_WORKER":
                 success, output = execute_start_worker(params)
-                
+
+            elif command == "RESTART_WORKER":
+                success, output = execute_restart_worker(params)
+
             elif command == "STOP_WORKER":
                 success, output = execute_stop_worker()
                 
