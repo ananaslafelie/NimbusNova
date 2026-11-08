@@ -398,6 +398,76 @@ def dashboard():
             to { opacity: 1; transform: translateY(0); }
         }
         
+        /* Workers */
+        .workers-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .worker-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 20px;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+        
+        .worker-item:hover {
+            background: rgba(99, 102, 241, 0.1);
+            border-color: var(--primary);
+        }
+        
+        .worker-status {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        
+        .worker-status.online {
+            background: #10b981;
+            box-shadow: 0 0 8px #10b981;
+        }
+        
+        .worker-status.offline {
+            background: #ef4444;
+        }
+        
+        .worker-info {
+            flex: 1;
+        }
+        
+        .worker-name {
+            font-weight: 600;
+            font-size: 15px;
+            margin-bottom: 2px;
+        }
+        
+        .worker-ip {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .worker-stats {
+            font-size: 12px;
+            color: var(--accent);
+            margin-top: 4px;
+        }
+        
+        .worker-badge {
+            padding: 6px 12px;
+            background: rgba(16, 185, 129, 0.2);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #10b981;
+        }
+        
         /* Empty State */
         .empty-state {
             text-align: center;
@@ -561,7 +631,7 @@ def dashboard():
                                 <div class="upload-title">Trage fișierul aici</div>
                                 <div class="upload-subtitle">sau click pentru a selecta JSON, CSV, TXT</div>
                             </div>
-                            <input type="file" id="fileInput" style="display: none;" accept=".json,.csv,.txt">
+                            <input type="file" id="fileInput" style="display: none;" accept=".json,.csv,.txt" onchange="handleFileUpload(this)">
                         </div>
                     </div>
                     
@@ -569,7 +639,7 @@ def dashboard():
                         <div class="card-header">
                             <h3 class="card-title">🖥️ Workeri</h3>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body" id="workersContainer">
                             <div class="empty-state">
                                 <div class="empty-state-icon">◉</div>
                                 <h3>Niciun worker</h3>
@@ -706,6 +776,124 @@ def dashboard():
             container.appendChild(toast);
             setTimeout(() => toast.remove(), 3000);
         }
+        
+        // UPLOAD FUNCTIONALITY
+        async function handleFileUpload(input) {
+            const file = input.files[0];
+            if (!file) return;
+            
+            showToast(\'Se procesează fișierul...\', \'info\');
+            
+            try {
+                const text = await file.text();
+                let data;
+                
+                if (file.name.endsWith(\'.json\')) {
+                    data = JSON.parse(text);
+                } else if (file.name.endsWith(\'.csv\')) {
+                    // Parse CSV simplu
+                    const lines = text.split(\'\\n\');
+                    const headers = lines[0].split(\',\');
+                    data = [];
+                    for (let i = 1; i < lines.length; i++) {
+                        if (lines[i].trim()) {
+                            const values = lines[i].split(\',\');
+                            const obj = {};
+                            headers.forEach((h, j) => obj[h.trim()] = values[j]);
+                            data.push(obj);
+                        }
+                    }
+                } else {
+                    data = [{content: text}];
+                }
+                
+                // Trimite la Master
+                const response = await fetch(\'/api/submit-task\', {
+                    method: \'POST\',
+                    headers: {\'Content-Type\': \'application/json\'},
+                    body: JSON.stringify({
+                        items: Array.isArray(data) ? data : [data],
+                        filename: file.name
+                    })
+                });
+                
+                if (response.ok) {
+                    showToast(\'Fișier trimis cu succes!\', \'success\');
+                    updateWorkersDisplay();
+                } else {
+                    showToast(\'Eroare la trimitere\', \'error\');
+                }
+            } catch (err) {
+                console.error(err);
+                showToast(\'Eroare: \' + err.message, \'error\');
+            }
+        }
+        
+        // Drag & drop
+        document.addEventListener(\'DOMContentLoaded\', () => {
+            const uploadZone = document.querySelector(\'.upload-zone\');
+            if (uploadZone) {
+                uploadZone.addEventListener(\'dragover\', (e) => {
+                    e.preventDefault();
+                    uploadZone.style.borderColor = \'var(--primary)\';
+                });
+                uploadZone.addEventListener(\'dragleave\', () => {
+                    uploadZone.style.borderColor = \'rgba(99, 102, 241, 0.3)\';
+                });
+                uploadZone.addEventListener(\'drop\', (e) => {
+                    e.preventDefault();
+                    uploadZone.style.borderColor = \'rgba(99, 102, 241, 0.3)\';
+                    const files = e.dataTransfer.files;
+                    if (files.length > 0) {
+                        document.getElementById(\'fileInput\').files = files;
+                        handleFileUpload(document.getElementById(\'fileInput\'));
+                    }
+                });
+            }
+        });
+        
+        // Actualizează lista de workeri
+        async function updateWorkersDisplay() {
+            try {
+                const res = await fetch(\'/api/master-status\');
+                const data = await res.json();
+                
+                const container = document.getElementById(\'workersContainer\');
+                
+                if (data.workers && data.workers.length > 0) {
+                    let html = \'<div class="workers-list">\';
+                    data.workers.forEach(worker => {
+                        const statusClass = worker.status === \'ONLINE\' ? \'online\' : \'offline\';
+                        html += `
+                            <div class="worker-item">
+                                <div class="worker-status ${statusClass}"></div>
+                                <div class="worker-info">
+                                    <div class="worker-name">${worker.id}</div>
+                                    <div class="worker-ip">${worker.ip}</div>
+                                    <div class="worker-stats">Chunks: ${worker.chunks_done || 0}</div>
+                                </div>
+                                <div class="worker-badge">${worker.status}</div>
+                            </div>
+                        `;
+                    });
+                    html += \'</div>\';
+                    container.innerHTML = html;
+                } else {
+                    container.innerHTML = `
+                        <div class="empty-state">
+                            <div class="empty-state-icon">◉</div>
+                            <h3>Niciun worker</h3>
+                            <p>Foloseste "Invita in echipa" pentru a adauga laptopuri</p>
+                        </div>
+                    `;
+                }
+            } catch (e) {
+                console.error(\'Eroare update:\', e);
+            }
+        }
+        
+        // Actualizare periodică
+        setInterval(updateWorkersDisplay, 3000);
     </script>
 </body>
 </html>'''

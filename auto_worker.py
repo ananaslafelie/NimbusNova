@@ -12,9 +12,9 @@ def install_requirements():
     try:
         import requests
     except ImportError:
-        print("📦 Instalare requests...")
+        print("[*] Instalare requests...")
         subprocess.check_call([sys.executable, "-m", "pip", "install", "requests", "-q"])
-        print("✅ Gata!")
+        print("[+] Gata!")
 
 install_requirements()
 
@@ -46,7 +46,7 @@ def register():
         )
         return r.json()
     except Exception as e:
-        print(f"⚠️ Eroare înregistrare: {e}")
+        print(f"[!] Eroare înregistrare: {e}")
         return None
 
 def get_task():
@@ -87,27 +87,27 @@ def submit_result(chunk_id, results):
         )
         return r.json()
     except Exception as e:
-        print(f"⚠️ Eroare submit: {e}")
+        print(f"[!] Eroare submit: {e}")
         return None
 
 # Main loop
 if __name__ == "__main__":
-    print("🔗 Conectare la Master...")
+    print("[*] Conectare la Master...")
     
     # Încearcă să te înregistrezi
     for i in range(5):
         result = register()
         if result:
-            print(f"✅ Înregistrat! Status: {result.get('status', 'OK')}")
+            print(f"[+] Inregistrat! Status: {result.get('status', 'OK')}")
             break
         else:
-            print(f"⏳ Retry {i+1}/5...")
+            print(f"[~] Retry {i+1}/5...")
             time.sleep(2)
     else:
-        print("❌ Nu m-am putut conecta. Verifică IP-ul și că Master rulează.")
+        print("[X] Nu m-am putut conecta. Verifica IP-ul si ca Master ruleaza.")
         sys.exit(1)
     
-    print("⏳ Aștept taskuri... (Ctrl+C pentru a opri)")
+    print("[~] Astept taskuri... (Ctrl+C pentru a opri)")
     print("="*60)
     
     chunks_done = 0
@@ -118,7 +118,7 @@ if __name__ == "__main__":
             
             if chunk:
                 chunk_id = chunk['id']
-                print(f"📦 Procesez: {chunk_id}")
+                print(f"[>] Procesez: {chunk_id}")
                 
                 # Procesare
                 results = process_chunk(chunk)
@@ -127,13 +127,13 @@ if __name__ == "__main__":
                 submit_result(chunk_id, results)
                 chunks_done += 1
                 
-                print(f"✓ Completat ({chunks_done} chunks) - {chunk_id}")
+                print(f"[OK] Completat ({chunks_done} chunks) - {chunk_id}")
             else:
                 time.sleep(1)
                 
         except KeyboardInterrupt:
-            print("\n👋 Oprire...")
+            print("\n[X] Oprire...")
             break
         except Exception as e:
-            print(f"⚠️ Eroare: {e}")
+            print(f"[!] Eroare: {e}")
             time.sleep(2)
