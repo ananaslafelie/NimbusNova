@@ -976,6 +976,149 @@ if __name__ == "__main__":
 </body>
 </html>'''
 
+# NOU: One-liner install endpoint
+@app.get("/install-worker")
+def install_worker_script():
+    """Returnează scriptul auto-worker pentru one-liner install"""
+    script = '''#!/usr/bin/env python3
+"""NOVA Auto-Worker Installer - Rulează automat"""
+import subprocess
+import sys
+import os
+
+print("="*60)
+print("  NOVA Auto-Worker Installer")
+print("="*60)
+
+# Instalare automată dependențe
+print("📦 Verificare dependențe...")
+try:
+    import requests
+except ImportError:
+    print("📦 Instalare requests...")
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "requests", "-q"])
+    print("✅ Requests instalat!")
+
+import requests
+import time
+import json
+import platform
+import socket
+
+# IP Master din argumente
+MASTER_IP = sys.argv[1] if len(sys.argv) > 1 else input("IP Master: ")
+MASTER_URL = f"http://{MASTER_IP}:8003"
+WORKER_ID = "worker-" + platform.node().lower().replace(" ", "-")[:10]
+
+print(f"🔗 Conectare la: {MASTER_URL}")
+print(f"🖥️  Worker ID: {WORKER_ID}")
+print("="*60)
+
+def register():
+    try:
+        ip = socket.gethostbyname(socket.gethostname())
+        r = requests.post(f"{MASTER_URL}/register", 
+            json={"worker_id": WORKER_ID, "ip": ip},
+            timeout=10
+        )
+        return r.json()
+    except Exception as e:
+        print(f"⚠️ Eroare: {e}")
+        return None
+
+def get_task():
+    try:
+        r = requests.get(f"{MASTER_URL}/get-task", 
+            params={"worker_id": WORKER_ID, "cpu_percent": 10, "ram_free_mb": 4000},
+            timeout=30
+        )
+        return r.json().get("chunk")
+    except:
+        return None
+
+def process_chunk(chunk):
+    data = chunk.get("data", [])
+    results = []
+    for item in data:
+        result = dict(item)
+        result["processed"] = True
+        result["by"] = WORKER_ID
+        results.append(result)
+    return results
+
+def submit_result(chunk_id, results):
+    try:
+        r = requests.post(f"{MASTER_URL}/submit-result",
+            json={"worker_id": WORKER_ID, "chunk_id": chunk_id, "results": results},
+            timeout=30
+        )
+        return r.json()
+    except:
+        return None
+
+# MAIN
+if __name__ == "__main__":
+    print("🔌 Conectare la Master...")
+    
+    for i in range(5):
+        result = register()
+        if result:
+            print(f"✅ Înregistrat!")
+            break
+        time.sleep(2)
+    else:
+        print("❌ Nu m-am putut conecta")
+        sys.exit(1)
+    
+    print("⏳ Aștept taskuri... (Ctrl+C pentru a opri)")
+    print("="*60)
+    
+    chunks_done = 0
+    
+    while True:
+        try:
+            chunk = get_task()
+            if chunk:
+                chunk_id = chunk['id']
+                print(f"📦 Procesez: {chunk_id}")
+                results = process_chunk(chunk)
+                submit_result(chunk_id, results)
+                chunks_done += 1
+                print(f"✓ Completat ({chunks_done} chunks)")
+            else:
+                time.sleep(1)
+        except KeyboardInterrupt:
+            print("\\n👋 Oprire...")
+            break
+        except Exception as e:
+            time.sleep(2)
+'''
+    return HTMLResponse(content=script)
+
+@app.get("/download-worker/{invite_code}")
+def download_worker(invite_code: str):
+    """Download auto_worker.py file"""
+    invite = _invites.get(invite_code)
+    if not invite:
+        return {"error": "Invite invalid"}
+    
+    master_ip = invite.get("master_ip", "localhost")
+    
+    # Citește auto_worker.py
+    try:
+        with open("auto_worker.py", "r") as f:
+            content = f.read()
+        
+        # Modifică IP-ul default
+        content = content.replace('MASTER_IP = sys.argv[1]', f'MASTER_IP = "{master_ip}"  # Configurat din invite')
+        
+        return HTMLResponse(
+            content=content,
+            headers={"Content-Disposition": "attachment; filename=nova_worker.py"}
+        )
+    except:
+        return {"error": "Fișier negăsit"}
+
 # API Endpoints pentru integrare cu Master
 @app.post("/api/submit-task")
 async def submit_task(task: TaskRequest):
