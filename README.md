@@ -1,45 +1,78 @@
-# QA DNA - Distributed Processing System
+# NOVA - Distributed Processing System
 
-Sistem distribuit Master-Worker pentru procesare paralelă de task-uri.
+Sistem distribuit Master-Worker cu Invite System - trimite link, devine worker automat!
 
-## Quick Start
+## 🎯 Scenariul tău
 
-### Dublu-click pentru a porni totul:
-```
-START_SYSTEM.bat
-```
+**Tu pe Windows (Master)** → **Generezi link** → **Trimiti prietenului** → **El dă click pe MacBook** → **Devine worker automat**
 
-### Manual:
+## 🚀 Quick Start
+
+### Tu (Windows - Master + Dashboard):
+
 ```powershell
-# Terminal 1 - Master
-python master.py --host 0.0.0.0 --port 8003
+# Pornește totul
+python nova_dashboard.py
 
-# Terminal 2 - Dashboard
-python dashboard_wave.py
-
-# Terminal 3 - Worker (pe MacBook/alt laptop)
-python worker.py --master http://IP_MASTER:8003 --id worker-1
+# Sau dublu-click
+START_NOVA.bat
 ```
 
-## URLs
-- Dashboard: http://localhost:8090
-- Master API: http://localhost:8003/status
+**Accesează:** http://localhost:8090
 
-## Features
-- Upload drag & drop (JSON/CSV/TXT)
-- Real-time progress tracking
-- Multi-worker support
-- Glassmorphism UI with wave animations
-- Cross-platform (Windows/Mac/Linux)
+### 2. Generează invitație:
+1. Click "Invită în echipă" în sidebar
+2. Completează nume + IP (sau Tailscale IP)
+3. Click "Generează Link"
+4. Copiază și trimite
 
-## Structură
-- `dashboard_wave.py` - Dashboard modern (port 8090)
+### Prietenul tău (MacBook):
+
+```bash
+# Deschide linkul primit în browser
+# Click "Descarcă Worker"
+# Rulează:
+
+pip install requests
+python nova_worker.py
+```
+
+**✅ GATA!** Se conectează automat și procesează taskuri!
+
+## 🎨 Features
+
+- 🌊 **Design futurist** - Glassmorphism, wave animations
+- 📤 **Upload drag & drop** - JSON/CSV/TXT
+- 🔔 **Invite system** - Trimite link, devine worker
+- 📊 **Real-time dashboard** - Vezi tot live
+- ⚡ **Progress tracking** - Urmărește taskuri
+- 🔗 **Cross-platform** - Windows + Mac
+
+## 📁 Fișiere
+
+- `nova_dashboard.py` - Dashboard (port 8090)
 - `master.py` - API Master (port 8003)
-- `worker.py` - Client Worker
+- `nova_worker.py` - Generat automat din invitație
 - `requirements.txt` - Dependențe
 
-## Pentru Hackathon / Multi-Laptop
-Vezi: [README_DISTRIBUTED.md](README_DISTRIBUTED.md)
+## 🌐 URLs
 
-## Credits
-Built for QA DNA Hackathon - Team NimbusNova
+- **Dashboard:** http://localhost:8090
+- **Master:** http://localhost:8003
+- **Join:** http://IP:8090/join/CODE
+
+## 💡 Cum funcționează
+
+```
+Tu generezi link → Trimite pe WhatsApp → Prietenul dă click → Descarcă → Conectat → Procesează
+```
+
+## 📖 Documentație completă
+
+Vezi: [README_NOVA.md](README_NOVA.md)
+
+## 🎉 Status
+
+✅ **FUNCȚIONAL** - Ready for hackathon!
+
+**Built with ❤️ for QA DNA**
